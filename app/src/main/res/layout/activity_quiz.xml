@@ -63,6 +63,14 @@
             android:text="Synonym and Antonyms"
             android:layout_marginTop="5dp"
             android:layout_gravity="center" />
+        <Button
+            android:id="@+id/personalizequestion"
+            style="@android:style/Widget.Button.Inset"
+            android:layout_width="207dp"
+            android:layout_height="69dp"
+            android:text="Personalize Question"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center" />
 
         <Button
             android:id="@+id/exit"

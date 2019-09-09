@@ -18,6 +18,7 @@
 
         <Button
             android:id="@+id/login"
+            style="@android:style/Widget.Material.Button.Inset"
             android:layout_width="236dp"
             android:layout_height="75dp"
             android:layout_gravity="center"
@@ -36,6 +37,7 @@
 
         <Button
             android:id="@+id/signup"
+            style="@android:style/Widget.Material.Button.Inset"
             android:layout_width="236dp"
             android:layout_height="75dp"
             android:layout_gravity="center"

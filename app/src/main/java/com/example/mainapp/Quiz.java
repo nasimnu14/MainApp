@@ -19,6 +19,7 @@ public class Quiz extends AppCompatActivity {
         Button idioms = (Button) findViewById(R.id.idioms);
         Button choose = (Button) findViewById(R.id.choose);
         Button exit = (Button) findViewById(R.id.exit);
+        Button person=(Button) findViewById(R.id.personalizequestion);
 
         antonyms.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +49,14 @@ public class Quiz extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Quiz.this, ChooseQuiz.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        person.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Quiz.this, PersonalizeQuestion.class);
                 startActivity(intent);
                 finish();
             }
