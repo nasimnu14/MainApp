@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="false">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/frinimage"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/frinlogo" />
+
+        <TextView
+            android:id="@+id/fstTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="QUIZ TEST "
+            android:textColor="#673AB7"
+            android:textSize="36dp"
+            android:layout_gravity="center" />
+
+
+        <Button
+            android:id="@+id/blank"
+            style="@android:style/Widget.Button.Inset"
+            android:layout_width="207dp"
+            android:layout_height="69dp"
+            android:text="Fill in the Blanks"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center" />
+
+        <Button
+            android:id="@+id/choose"
+            style="@android:style/Widget.Button.Inset"
+            android:layout_width="207dp"
+            android:layout_height="69dp"
+            android:text="Choose the best answer"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center" />
+
+        <Button
+            android:id="@+id/idioms"
+            style="@android:style/Widget.Button.Inset"
+            android:layout_width="207dp"
+            android:layout_height="69dp"
+            android:text="Idioms and Phrases "
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center" />
+
+
+        <Button
+            android:id="@+id/antonym"
+            style="@android:style/Widget.Button.Inset"
+            android:layout_width="207dp"
+            android:layout_height="69dp"
+            android:text="Synonym and Antonyms"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center" />
+
+        <Button
+            android:id="@+id/exit"
+            style="@android:style/Widget.Button.Inset"
+            android:layout_width="207dp"
+            android:layout_height="69dp"
+            android:text="Exit"
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center" />
+
+    </LinearLayout>
+</ScrollView>
