@@ -62,7 +62,7 @@ public class SynonymandAntonym extends AppCompatActivity {
             FirstPage.nowSynonym++;
 
 
-            int i=(cur-1)*8+1;
+            int i=1;
             question.setText(tokens[i]+". "+tokens[i+1]);
             radioButtons[0].setText(tokens[i+2]);
             radioButtons[1].setText(tokens[i+3]);

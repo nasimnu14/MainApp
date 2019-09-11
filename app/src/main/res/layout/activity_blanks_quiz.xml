@@ -22,7 +22,7 @@
         android:id="@+id/textView2"
         android:layout_width="367dp"
         android:layout_height="34dp"
-        android:text="Choose The best"
+        android:text="Fill The Blank"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#5C14DB"
@@ -54,7 +54,7 @@
             android:text="Question"
             android:textAlignment="center"
             android:textColor="#0E7ACF"
-            android:textSize="24sp" />
+            android:textSize="14sp" />
 
         <RadioButton
             android:id="@+id/radioButton1"

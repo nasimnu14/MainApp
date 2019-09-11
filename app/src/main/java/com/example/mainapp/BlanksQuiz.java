@@ -62,7 +62,7 @@ public class BlanksQuiz extends AppCompatActivity {
             FirstPage.nowblank+=1;
 
 
-            int i=(cur-1)*8+1;
+            int i=1;
             question.setText(tokens[i]+". "+tokens[i+1]);
             radioButtons[0].setText(tokens[i+2]);
             radioButtons[1].setText(tokens[i+3]);
@@ -117,7 +117,7 @@ public class BlanksQuiz extends AppCompatActivity {
                 Socket socket = new Socket(FirstPage.ip, FirstPage.port);
                 DataInputStream in = new DataInputStream(socket.getInputStream());
                 DataOutputStream out = new DataOutputStream(socket.getOutputStream());
-                String sendmessage = "messagetype=synonymquiz#";
+                String sendmessage = "messagetype=blankquiz#";
                 sendmessage += "username=" + Login.userid;
                 sendmessage += "#password=" + Login.userpassword;
 
