@@ -107,20 +107,7 @@ public class SpellingCorrect extends AppCompatActivity {
                 socket.close();
 
 
-                File file = new File("state.txt");
 
-                BufferedWriter bout = new BufferedWriter(new FileWriter("state.txt", true));
-
-                String wrong = wrongline.getText().toString();
-                String[] tokens = wrongline.getText().toString().split(" ");
-                int count1 = tokens.length;
-
-                tokens = msg.split(" ");
-                int count2 = tokens.length;
-
-                bout.write(wrong + "#" + msg + "#" + count1 + "#" + count2);
-
-                bout.close();
 
 
             } catch (UnknownHostException e) {

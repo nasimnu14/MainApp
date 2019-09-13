@@ -27,6 +27,8 @@ public class ChooseQuiz extends AppCompatActivity {
     private String msg;
     private String str;
     private Button next;
+    private String isCorrect;
+    private String questionno;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +70,7 @@ public class ChooseQuiz extends AppCompatActivity {
             radioButtons[2].setText(tokens[i+4]);
             radioButtons[3].setText(tokens[i+5]);
             str=tokens[i+6];
+            questionno=tokens[i];
 
         }
         submit.setOnClickListener(new View.OnClickListener() {
@@ -81,12 +84,16 @@ public class ChooseQuiz extends AppCompatActivity {
                         answer.setTextColor(Color.GREEN);
                         answer.setTextSize(20);
                         answer.setText(str+"  is correct ");
+                        isCorrect="true";
                     }
                     else {
                         answer.setTextColor(Color.RED);
                         answer.setTextSize(15);
+                        isCorrect="false";
                         answer.setText(selectbutton.getText().toString()+"  is not correct answer\n Correct answer is  "+str);
                     }
+                    Thread t1=new Thread(new NextThread());
+                    t1.start();
                 }
             }
         });
@@ -137,6 +144,32 @@ public class ChooseQuiz extends AppCompatActivity {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
+            }
+        }
+    }
+    class NextThread implements  Runnable{
+        @Override
+        public void run(){
+            try{
+                Socket socket=new Socket(FirstPage.ip,FirstPage.port);
+                DataOutputStream out=new DataOutputStream(socket.getOutputStream());
+                String sendmessage="";
+                sendmessage="messagetype=chooseresult#";
+                sendmessage+="username="+Login.userid;
+                sendmessage+="#password="+Login.userpassword;
+                sendmessage+="#questionno="+questionno;
+                sendmessage+="#iscorrect="+isCorrect;
+                out.write(sendmessage.getBytes("UTF8"));
+                out.flush();
+                out.close();
+                socket.close();
+            }
+            catch (UnknownHostException ex){
+
+
+            }
+            catch (IOException ex){
+
             }
         }
     }

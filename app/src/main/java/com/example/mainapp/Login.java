@@ -61,7 +61,7 @@ public class Login extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 } else {
-                    signin.setTextSize(8);
+                    signin.setTextSize(12);
                     signin.setTextColor(Color.RED);
                     signin.setText("Please enter valid userid and password");
                 }
