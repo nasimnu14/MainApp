@@ -35,6 +35,15 @@
             android:hint="Name"
             android:inputType="textPersonName"
             android:layout_gravity="center" />
+        <EditText
+            android:id="@+id/userid"
+            style="@style/Widget.AppCompat.AutoCompleteTextView"
+            android:layout_width="350dp"
+            android:layout_height="62dp"
+            android:ems="10"
+            android:hint="UserId"
+            android:inputType="textPersonName"
+            android:layout_gravity="center" />
 
 
         <EditText

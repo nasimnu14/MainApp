@@ -79,6 +79,7 @@ public class ChooseQuiz extends AppCompatActivity {
                 int select=radioGroup.getCheckedRadioButtonId();
                 if(select!=-1){
                     next.setEnabled(true);
+                    submit.setEnabled(false);
                     RadioButton selectbutton=(RadioButton) findViewById(select);
                     if(str.equalsIgnoreCase(selectbutton.getText().toString())){
                         answer.setTextColor(Color.GREEN);
@@ -92,8 +93,15 @@ public class ChooseQuiz extends AppCompatActivity {
                         isCorrect="false";
                         answer.setText(selectbutton.getText().toString()+"  is not correct answer\n Correct answer is  "+str);
                     }
+
                     Thread t1=new Thread(new NextThread());
                     t1.start();
+                    try{
+                        t1.join();
+                    }
+                    catch (Exception ex){
+
+                    }
                 }
             }
         });

@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -23,6 +24,7 @@ public class BlanksQuiz extends AppCompatActivity {
     private RadioButton[] radioButtons;
     private TextView question;
     private TextView answer;
+    private EditText answertext;
     private Button submit;
     private String msg;
     private String str;
@@ -36,16 +38,10 @@ public class BlanksQuiz extends AppCompatActivity {
         setContentView(R.layout.activity_blanks_quiz);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
-        radioButtons = new RadioButton[4];
-        radioButtons[0] = (RadioButton) findViewById(R.id.radioButton1);
-        radioButtons[1] = (RadioButton) findViewById(R.id.radioButton2);
-        radioButtons[2] = (RadioButton) findViewById(R.id.radioButton3);
-        radioButtons[3] = (RadioButton) findViewById(R.id.radioButton4);
-        question = (TextView) findViewById(R.id.question);
-        answer = (TextView) findViewById(R.id.answer);
-
-        submit = (Button) findViewById(R.id.submit);
+        question=(TextView) findViewById(R.id.question);
+        answertext=(EditText) findViewById((R.id.answertext));
+        answer=(TextView) findViewById(R.id.answer);
+        submit=(Button) findViewById(R.id.submit);
         next=(Button) findViewById(R.id.next);
         next.setEnabled(false);
 
@@ -59,43 +55,33 @@ public class BlanksQuiz extends AppCompatActivity {
         }
         String []tokens=msg.split("#");
         if(tokens[0].contains("200")){
-            str=tokens[tokens.length-1];
-            int cur=FirstPage.nowblank;
-            FirstPage.nowblank+=1;
-
-
-            int i=1;
-            question.setText(tokens[i]+". "+tokens[i+1]);
-            radioButtons[0].setText(tokens[i+2]);
-            radioButtons[1].setText(tokens[i+3]);
-            radioButtons[2].setText(tokens[i+4]);
-            radioButtons[3].setText(tokens[i+5]);
-            str=tokens[i+6];
-            questionno=tokens[i];
+            questionno=tokens[1];
+            question.setText(tokens[1]+". "+tokens[2]);
+            str=tokens[3];
 
         }
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int select=radioGroup.getCheckedRadioButtonId();
-                if(select!=-1){
-                    next.setEnabled(true);
-                    RadioButton selectbutton=(RadioButton) findViewById(select);
-                    if(str.equalsIgnoreCase(selectbutton.getText().toString())){
-                        answer.setTextColor(Color.GREEN);
-                        answer.setTextSize(20);
-                        answer.setText(str+"  is correct ");
-                        isCorrect="true";
-                    }
-                    else {
-                        answer.setTextColor(Color.RED);
-                        answer.setTextSize(15);
-                        isCorrect="false";
-                        answer.setText(selectbutton.getText().toString()+"  is not correct answer\n Correct answer is  "+str);
-                    }
-                    Thread t1=new Thread(new NextThread());
-                    t1.start();
-                }
+               if(answertext.getText().toString().equalsIgnoreCase(str)){
+                   answer.setText("Correct");
+                   next.setEnabled(true);
+                   submit.setEnabled(false);
+                   isCorrect="true";
+               }
+               else {
+                   answer.setTextColor(Color.RED);
+                   answer.setText("Wrong");
+                   isCorrect="false";
+               }
+               Thread t2=new Thread(new NextThread());
+               t2.start();
+               try{
+                   t2.join();
+               }
+               catch (Exception e){
+
+               }
             }
         });
         next.setOnClickListener(new View.OnClickListener() {

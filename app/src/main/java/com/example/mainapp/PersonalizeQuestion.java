@@ -12,6 +12,7 @@ public class PersonalizeQuestion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personalize_question);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        
     }
     @Override
     public boolean onSupportNavigateUp() {

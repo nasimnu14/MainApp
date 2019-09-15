@@ -56,30 +56,14 @@
             android:textColor="#0E7ACF"
             android:textSize="14sp" />
 
-        <RadioButton
-            android:id="@+id/radioButton1"
+        <EditText
+            android:id="@+id/answertext"
             android:layout_width="match_parent"
-            android:layout_height="49dp"
-            android:text="RadioButton" />
-
-
-        <RadioButton
-            android:id="@+id/radioButton2"
-            android:layout_width="match_parent"
-            android:layout_height="57dp"
-            android:text="RadioButton" />
-
-        <RadioButton
-            android:id="@+id/radioButton3"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:text="RadioButton" />
-
-        <RadioButton
-            android:id="@+id/radioButton4"
-            android:layout_width="match_parent"
-            android:layout_height="51dp"
-            android:text="RadioButton" />
+            android:layout_height="83dp"
+            android:ems="10"
+            android:hint="Write Here The answer"
+            android:inputType="textPersonName"
+            android:textAlignment="center" />
 
 
         <TextView
@@ -90,6 +74,7 @@
             android:textAlignment="center"
             android:textColor="#18C03C"
             android:textSize="30sp" />
+
     </RadioGroup>
 
     <Button

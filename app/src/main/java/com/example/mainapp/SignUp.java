@@ -28,6 +28,7 @@ public class SignUp extends AppCompatActivity {
     private Socket socket;
     private TextView create;
     private String msg = "";
+    private EditText userid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,7 @@ public class SignUp extends AppCompatActivity {
         phone = (EditText) findViewById(R.id.phone);
         password = (EditText) findViewById(R.id.password);
         confirmpassword = (EditText) findViewById(R.id.confirmpass);
+        userid=(EditText) findViewById(R.id.userid);
         Button register = (Button) findViewById(R.id.login);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +62,9 @@ public class SignUp extends AppCompatActivity {
                         startActivity(intent);
                         finish();
 
+                    }
+                    else {
+                        create.setText(msg);
                     }
 
 
@@ -90,6 +95,7 @@ public class SignUp extends AppCompatActivity {
                 messagesend += "#email=" + email.getText().toString();
                 messagesend += "#phone=" + phone.getText().toString();
                 messagesend += "#password=" + password.getText().toString();
+                messagesend += "#userid=" + userid.getText().toString();
                 DataInputStream in = new DataInputStream(socket.getInputStream());
                 DataOutputStream out = new DataOutputStream(socket.getOutputStream());
                 out.write(messagesend.getBytes("UTF8"));

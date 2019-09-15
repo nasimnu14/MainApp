@@ -78,13 +78,14 @@ public class IdiomsQuiz extends AppCompatActivity {
             public void onClick(View v) {
                 int select=radioGroup.getCheckedRadioButtonId();
                 if(select!=-1){
-                    submit.setEnabled(false);
-                    next.setEnabled(true);
+                   // submit.setEnabled(false);
                     RadioButton selectbutton=(RadioButton) findViewById(select);
                     if(str.equalsIgnoreCase(selectbutton.getText().toString())){
                         answer.setTextColor(Color.GREEN);
                         answer.setTextSize(20);
                         answer.setText(str+"  is correct ");
+                        next.setEnabled(true);
+
                         isCorrect="true";
                     }
                     else {
@@ -95,6 +96,12 @@ public class IdiomsQuiz extends AppCompatActivity {
                     }
                     Thread t1=new Thread(new NextThread());
                     t1.start();
+                    try{
+                        t1.join();
+                    }
+                    catch (Exception ex){
+
+                    }
                 }
             }
         });

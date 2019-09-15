@@ -115,33 +115,7 @@ public class SpellingCorrect extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            try {
 
-
-                Socket socket = new Socket(FirstPage.ip, FirstPage.port);
-                DataInputStream in = new DataInputStream(socket.getInputStream());
-                DataOutputStream out = new DataOutputStream(socket.getOutputStream());
-                String sendmessage = "messagetype=state#";
-
-
-                FirstPage.data[FirstPage.count] = wrongline.getText().toString() + "#" + msg;
-
-
-                out.write((sendmessage + FirstPage.data[FirstPage.count]).getBytes("UTF8"));
-                out.flush();
-                byte[] b = new byte[5164];
-                in.read(b);
-
-                String msg2;
-                msg2 = new String(b, StandardCharsets.UTF_8);
-                in.close();
-                out.close();
-                socket.close();
-            } catch (UnknownHostException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
     }
 }

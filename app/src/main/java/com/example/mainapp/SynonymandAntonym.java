@@ -79,12 +79,12 @@ public class SynonymandAntonym extends AppCompatActivity {
             public void onClick(View v) {
                 int select=radioGroup.getCheckedRadioButtonId();
                 if(select!=-1){
-                    next.setEnabled(true);
                     RadioButton selectbutton=(RadioButton) findViewById(select);
                     if(str.equalsIgnoreCase(selectbutton.getText().toString())){
                         answer.setTextColor(Color.GREEN);
                         answer.setTextSize(20);
                         answer.setText(str+"  is correct ");
+                        next.setEnabled(true);
                         isCorrect="true";
                     }
                     else {
@@ -95,6 +95,12 @@ public class SynonymandAntonym extends AppCompatActivity {
                     }
                     Thread t1=new Thread(new NextThread());
                     t1.start();
+                    try{
+                        t1.join();
+                    }
+                    catch (Exception ex){
+
+                    }
                 }
             }
         });
