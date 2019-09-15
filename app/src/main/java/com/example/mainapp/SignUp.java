@@ -33,6 +33,8 @@ public class SignUp extends AppCompatActivity {
     private String msg = "";
     private EditText userid;
     private ListView gender;
+    private EditText bdate;
+    private EditText location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,8 @@ public class SignUp extends AppCompatActivity {
         password = (EditText) findViewById(R.id.password);
         confirmpassword = (EditText) findViewById(R.id.confirmpass);
         userid=(EditText) findViewById(R.id.userid);
+        bdate=(EditText) findViewById(R.id.birthdate);
+        location=(EditText) findViewById(R.id.location);
         Button register = (Button) findViewById(R.id.login);
 
 
@@ -56,6 +60,7 @@ public class SignUp extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                userid.setTextColor(Color.BLACK);
                 if (password.getText().toString().matches(confirmpassword.getText().toString())) {
 
                     Thread t1 = new Thread(new ClientThread());
@@ -73,7 +78,8 @@ public class SignUp extends AppCompatActivity {
 
                     }
                     else {
-                        create.setText(msg);
+                        userid.setTextColor(Color.RED);
+                       
                     }
 
 
@@ -105,6 +111,9 @@ public class SignUp extends AppCompatActivity {
                 messagesend += "#phone=" + phone.getText().toString();
                 messagesend += "#password=" + password.getText().toString();
                 messagesend += "#userid=" + userid.getText().toString();
+                messagesend += "#birthdate="+bdate.getText().toString();
+                messagesend += "#location="+location.getText().toString();
+
                 DataInputStream in = new DataInputStream(socket.getInputStream());
                 DataOutputStream out = new DataOutputStream(socket.getOutputStream());
                 out.write(messagesend.getBytes("UTF8"));

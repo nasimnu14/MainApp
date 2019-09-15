@@ -63,7 +63,8 @@ public class BlanksQuiz extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               if(answertext.getText().toString().equalsIgnoreCase(str)){
+               if(answertext.getText().toString().trim().equalsIgnoreCase(str.trim())){
+                   answer.setTextColor(Color.GREEN);
                    answer.setText("Correct");
                    next.setEnabled(true);
                    submit.setEnabled(false);

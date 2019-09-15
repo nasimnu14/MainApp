@@ -15,6 +15,7 @@ import java.nio.charset.StandardCharsets;
 
 public class MyProfile extends AppCompatActivity {
     private TextView name;
+    private TextView userid;
     private TextView email;
     private TextView birthday;
     private TextView location;
@@ -26,9 +27,11 @@ public class MyProfile extends AppCompatActivity {
         setContentView(R.layout.activity_my_profile);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         name = (TextView) findViewById(R.id.name);
+        userid=(TextView) findViewById(R.id.userid);
         email = (TextView) findViewById(R.id.email);
-        birthday = (TextView) findViewById(R.id.birth);
+
         location = (TextView) findViewById(R.id.location);
+        birthday = (TextView) findViewById(R.id.birth);
 
         Thread t1 = new Thread(new ClientThread());
         t1.start();
@@ -36,6 +39,14 @@ public class MyProfile extends AppCompatActivity {
             t1.join();
         } catch (InterruptedException e) {
 
+        }
+        String []tokens=msg.split("#");
+        if(tokens[0].contains("200")){
+            name.setText("Name: "+tokens[1]);
+            userid.setText("Id: "+tokens[2]);
+            email.setText("Email: "+tokens[3]);
+            location.setText("Location: "+tokens[4]);
+            birthday.setText("BirthDay: "+tokens[5]);
         }
 
 
@@ -59,7 +70,7 @@ public class MyProfile extends AppCompatActivity {
             try {
                 Socket socket = new Socket(FirstPage.ip, FirstPage.port);
                 String messagesend = "messagetype=myprofile#";
-                messagesend += "email=" + Login.userid;
+                messagesend += "id=" + Login.userid;
                 messagesend += "#password=" + Login.userpassword;
                 DataInputStream in = new DataInputStream(socket.getInputStream());
                 DataOutputStream out = new DataOutputStream(socket.getOutputStream());

@@ -74,23 +74,15 @@
             android:inputType="phone" />
 
         <EditText
-            android:id="@+id/date"
+            android:id="@+id/birthdate"
             android:layout_width="350dp"
             android:layout_height="75dp"
             android:layout_gravity="center"
             android:ems="10"
-            android:hint="BirthDay (dd/mm/yyyy)"
+            android:hint="BirthDay (yyyy-mm-dd)"
             android:inputType="date" />
 
-        <EditText
-            android:id="@+id/age"
-            android:layout_width="145dp"
-            android:layout_height="66dp"
-            android:layout_gravity="left"
 
-            android:ems="10"
-            android:hint="Age"
-            android:inputType="numberDecimal" />
 
 
         <EditText

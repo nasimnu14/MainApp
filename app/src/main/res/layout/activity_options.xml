@@ -42,7 +42,7 @@
             android:layout_width="207dp"
             android:layout_height="69dp"
             android:text="Quiz"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="20dp"
             android:layout_gravity="center" />
 
         <Button
@@ -51,7 +51,7 @@
             android:layout_width="207dp"
             android:layout_height="69dp"
             android:text="My Profile"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="20dp"
             android:layout_gravity="center" />
 
         <Button
@@ -60,7 +60,7 @@
             android:layout_width="207dp"
             android:layout_height="69dp"
             android:text="Exit"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="20dp"
             android:layout_gravity="center" />
 
     </LinearLayout>

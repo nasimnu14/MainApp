@@ -45,28 +45,30 @@ public class Login extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Thread t1 = new Thread(new clientThread());
-                t1.start();
-                try {
-                    t1.join();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                if (email.getText().toString().isEmpty() == false || password.getText().toString().isEmpty()==false) {
+                    Thread t1 = new Thread(new clientThread());
+                    t1.start();
+                    try {
+                        t1.join();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+
+                    if (msg.contains("200")) {
+                        userid = email.getText().toString();
+                        userpassword = password.getText().toString();
+                        Intent intent = new Intent(Login.this, Options.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        signin.setTextSize(12);
+                        signin.setTextColor(Color.RED);
+                        signin.setText("Please enter valid userid and password");
+                    }
+
+
                 }
-
-
-                if (msg.contains("200")) {
-                    userid = email.getText().toString();
-                    userpassword = password.getText().toString();
-                    Intent intent = new Intent(Login.this, Options.class);
-                    startActivity(intent);
-                    finish();
-                } else {
-                    signin.setTextSize(12);
-                    signin.setTextColor(Color.RED);
-                    signin.setText("Please enter valid userid and password");
-                }
-
-
             }
         });
     }

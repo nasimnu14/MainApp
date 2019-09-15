@@ -56,13 +56,7 @@ public class SpellingCorrect extends AppCompatActivity {
 
                 String[] tokens = msg.split("#");
                 if (tokens[0].contains("200")) {
-                    if (tokens.length > 1) {
-                        correctText.setText(tokens[1]);
-                        FirstPage.data[FirstPage.count] = wrongline.getText().toString() + "#" + msg;
-                        FirstPage.count++;
-                    } else {
-                        correctText.setText(" Server has send the message ");
-                    }
+                   correctText.setText(tokens[1].toString());
                 }
 
 
