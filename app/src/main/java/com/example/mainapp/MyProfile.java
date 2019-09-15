@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.io.DataInputStream;
@@ -33,6 +35,9 @@ public class MyProfile extends AppCompatActivity {
         location = (TextView) findViewById(R.id.location);
         birthday = (TextView) findViewById(R.id.birth);
 
+        Button edit = (Button) findViewById(R.id.editpro);
+        Button stat = (Button) findViewById(R.id.statistics);
+
         Thread t1 = new Thread(new ClientThread());
         t1.start();
         try {
@@ -48,6 +53,24 @@ public class MyProfile extends AppCompatActivity {
             location.setText("Location: "+tokens[4]);
             birthday.setText("BirthDay: "+tokens[5]);
         }
+
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MyProfile.this, EditProfile.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        stat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MyProfile.this, Statistics.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
 
 

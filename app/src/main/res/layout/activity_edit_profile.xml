@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="false">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/frinimage"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/frinlogo" />
+
+        <TextView
+            android:id="@+id/fstTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="Edit Profile"
+            android:textColor="#673AB7"
+            android:textSize="36dp" />
+
+
+        <EditText
+            android:id="@+id/username"
+            style="@style/Widget.AppCompat.AutoCompleteTextView"
+            android:layout_width="350dp"
+            android:layout_height="62dp"
+            android:ems="10"
+            android:hint="Name"
+            android:inputType="textPersonName"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center" />
+
+
+        <EditText
+            android:id="@+id/email_id"
+            android:layout_width="350dp"
+            android:layout_height="61dp"
+            android:ems="10"
+            android:layout_marginTop="10dp"
+            android:hint="Email Address"
+            android:inputType="textEmailAddress"
+            android:layout_gravity="center" />
+        <EditText
+            android:id="@+id/location1"
+            style="@style/Widget.AppCompat.AutoCompleteTextView"
+            android:layout_width="350dp"
+            android:layout_height="62dp"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="Your current Location"
+            android:inputType="textPersonName"
+            android:layout_gravity="center" />
+
+        <EditText
+            android:id="@+id/bday"
+            android:layout_width="350dp"
+            android:layout_height="75dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="BirthDay (yyyy-mm-dd)"
+            android:inputType="date" />
+
+
+
+
+        <EditText
+            android:id="@+id/pass"
+            android:layout_width="350dp"
+            android:layout_height="53dp"
+            android:ems="10"
+            android:layout_marginTop="10dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:visibility="visible"
+            android:layout_gravity="center" />
+
+        <EditText
+            android:id="@+id/confirmpassword"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
+            android:ems="10"
+            android:layout_marginTop="10dp"
+            android:hint="Confirm Password"
+            android:inputType="textPassword"
+            android:visibility="visible"
+            android:layout_gravity="center" />
+
+        <Button
+            android:id="@+id/edited"
+            android:layout_width="260dp"
+            android:layout_height="54dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="50dp"
+            android:text="Submit"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+
+    </LinearLayout>
+</ScrollView>

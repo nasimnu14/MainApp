@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:text="My Profile"
             android:textColor="#673AB7"
             android:textSize="36dp" />
@@ -31,6 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_gravity="center"
+            android:layout_marginTop="10dp"
             app:srcCompat="@drawable/index" />
 
         <TextView
@@ -78,16 +79,32 @@
             android:text="Birthday"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-        <TextView
-
-            android:layout_width="276dp"
-            android:layout_height="51dp"
-            android:layout_marginTop="100dp"
-            android:layout_gravity="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="50dp"
+            android:orientation="horizontal">
 
 
+            <Button
+                android:id="@+id/editpro"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:text="Edit Profile" />
+
+            <Button
+                android:id="@+id/statistics"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:text="Statistics" />
+        </LinearLayout>
 
 
     </LinearLayout>
