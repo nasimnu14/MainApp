@@ -39,57 +39,41 @@ public class PersonalizeQuestion extends AppCompatActivity {
         submit=(Button) findViewById(R.id.submit);
         next=(Button) findViewById(R.id.next);
         next.setEnabled(false);
+
+        answertext=(EditText) findViewById(R.id.answertext);
         question=(TextView) findViewById(R.id.question);
         answer=(TextView) findViewById(R.id.answer);
-        answertext=(EditText) findViewById(R.id.answertext);
 
         Thread t1=new Thread(new ClientThread());
         t1.start();
         try{
             t1.join();
         }
-        catch (Exception e){
-            e.printStackTrace();
+        catch (Exception ecx){
+
         }
         String []tokens=msg.split("#");
-        if(tokens[0].equalsIgnoreCase("200")){
-            questionno=tokens[1];
-            question.setText(tokens[1]+"."+tokens[2]);
+        if(tokens[0].contains("200")) {
+            question.setText(tokens[1] + ")" + tokens[2]);
             str=tokens[3];
         }
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (str.equalsIgnoreCase(answertext.getText().toString())){
-                    answer.setTextColor(Color.RED);
-                    answer.setText("Correct");
-                    iscorrect="true";
-                    submit.setEnabled(false);
+                if(answertext.getText().toString().equalsIgnoreCase(str)){
+                    answer.setTextColor(Color.GREEN);
+                    answer.setText("Correct Answer");
                     next.setEnabled(true);
+                    submit.setEnabled(false);
                 }
                 else {
                     answer.setTextColor(Color.RED);
-                    answer.setText("Wrong answer.Try again");
-                    iscorrect="false";
-                }
-                Thread t2=new Thread(new NextThread());
-                t2.start();
-                try{
-                    t2.join();
-                }
-                catch (Exception ex){
+                    answer.setText("Incorrect");
 
                 }
             }
         });
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(PersonalizeQuestion.this, PersonalizeQuestion.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+
 
     }
     @Override
