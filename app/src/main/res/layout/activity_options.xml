@@ -55,15 +55,6 @@
             android:layout_gravity="center" />
 
         <Button
-            android:id="@+id/statistics"
-            style="@android:style/Widget.Button.Inset"
-            android:layout_width="207dp"
-            android:layout_height="69dp"
-            android:text="Statistics"
-            android:layout_marginTop="5dp"
-            android:layout_gravity="center" />
-
-        <Button
             android:id="@+id/exit"
             style="@android:style/Widget.Button.Inset"
             android:layout_width="207dp"
