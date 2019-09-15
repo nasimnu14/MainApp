@@ -6,8 +6,11 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -29,6 +32,7 @@ public class SignUp extends AppCompatActivity {
     private TextView create;
     private String msg = "";
     private EditText userid;
+    private ListView gender;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,8 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
+        String []Gender={"Male", "Female","Other"};
         create=(TextView) findViewById(R.id.fstTxt);
         name = (EditText) findViewById(R.id.name);
         email = (EditText) findViewById(R.id.email);
@@ -44,6 +50,9 @@ public class SignUp extends AppCompatActivity {
         confirmpassword = (EditText) findViewById(R.id.confirmpass);
         userid=(EditText) findViewById(R.id.userid);
         Button register = (Button) findViewById(R.id.login);
+
+
+
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

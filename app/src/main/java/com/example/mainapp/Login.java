@@ -111,7 +111,7 @@ public class Login extends AppCompatActivity {
                 //txt.setText(ex.toString());
 
             } catch (IOException ex) {
-                //txt.setText(ex.toString());
+                ////txt.setText(ex.toString());
 
             } catch (Exception ex) {
 
