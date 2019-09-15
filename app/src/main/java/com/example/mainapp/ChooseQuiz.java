@@ -78,20 +78,22 @@ public class ChooseQuiz extends AppCompatActivity {
             public void onClick(View v) {
                 int select=radioGroup.getCheckedRadioButtonId();
                 if(select!=-1){
-                    next.setEnabled(true);
-                    submit.setEnabled(false);
+
+
                     RadioButton selectbutton=(RadioButton) findViewById(select);
                     if(str.equalsIgnoreCase(selectbutton.getText().toString())){
                         answer.setTextColor(Color.GREEN);
                         answer.setTextSize(20);
-                        answer.setText(str+"  is correct ");
+                        answer.setText("Correct Answer");
+                        submit.setEnabled(false);
+                        next.setEnabled(true);
                         isCorrect="true";
                     }
                     else {
                         answer.setTextColor(Color.RED);
                         answer.setTextSize(15);
                         isCorrect="false";
-                        answer.setText(selectbutton.getText().toString()+"  is not correct answer\n Correct answer is  "+str);
+                        answer.setText("Wrong");
                     }
 
                     Thread t1=new Thread(new NextThread());

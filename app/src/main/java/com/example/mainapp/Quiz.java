@@ -53,14 +53,14 @@ public class Quiz extends AppCompatActivity {
                 finish();
             }
         });
-        person.setOnClickListener(new View.OnClickListener() {
+        /*person.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(Quiz.this, PersonalizeQuestion.class);
                 startActivity(intent);
                 finish();
             }
-        });
+        });*/
 
         exit.setOnClickListener(new View.OnClickListener() {
             @Override

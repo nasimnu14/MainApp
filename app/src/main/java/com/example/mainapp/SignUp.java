@@ -79,7 +79,7 @@ public class SignUp extends AppCompatActivity {
                     }
                     else {
                         userid.setTextColor(Color.RED);
-                       
+
                     }
 
 

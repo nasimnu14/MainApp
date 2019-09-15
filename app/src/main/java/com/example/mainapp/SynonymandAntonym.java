@@ -83,15 +83,16 @@ public class SynonymandAntonym extends AppCompatActivity {
                     if(str.equalsIgnoreCase(selectbutton.getText().toString())){
                         answer.setTextColor(Color.GREEN);
                         answer.setTextSize(20);
-                        answer.setText(str+"  is correct ");
+                        submit.setEnabled(false);
+                        answer.setText("Correct answer");
                         next.setEnabled(true);
                         isCorrect="true";
                     }
                     else {
                         answer.setTextColor(Color.RED);
-                        answer.setTextSize(15);
+                        answer.setTextSize(20);
                         isCorrect="false";
-                        answer.setText(selectbutton.getText().toString()+"  is not correct answer\n Correct answer is  "+str);
+                        answer.setText( "Incorrect");
                     }
                     Thread t1=new Thread(new NextThread());
                     t1.start();

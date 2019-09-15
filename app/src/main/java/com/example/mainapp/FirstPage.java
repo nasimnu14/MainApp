@@ -12,7 +12,7 @@ import java.net.Socket;
 
 public class FirstPage extends AppCompatActivity {
 
-    public static final String ip = "192.168.0.105";
+    public static final String ip = "192.168.43.233";
     public static final int port = 8080;
     public Socket socket;
     public TextView txt;

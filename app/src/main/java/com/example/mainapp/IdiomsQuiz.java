@@ -83,7 +83,8 @@ public class IdiomsQuiz extends AppCompatActivity {
                     if(str.equalsIgnoreCase(selectbutton.getText().toString())){
                         answer.setTextColor(Color.GREEN);
                         answer.setTextSize(20);
-                        answer.setText(str+"  is correct ");
+                        answer.setText("Correct  answer");
+                        submit.setEnabled(false);
                         next.setEnabled(true);
 
                         isCorrect="true";
@@ -92,7 +93,7 @@ public class IdiomsQuiz extends AppCompatActivity {
                         answer.setTextColor(Color.RED);
                         answer.setTextSize(15);
                         isCorrect="false";
-                        answer.setText(selectbutton.getText().toString()+"  is not correct answer\n Correct answer is  "+str);
+                        answer.setText("Wrong Answer");
                     }
                     Thread t1=new Thread(new NextThread());
                     t1.start();
