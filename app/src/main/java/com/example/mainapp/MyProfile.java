@@ -11,11 +11,13 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.nio.charset.StandardCharsets;
 
 public class MyProfile extends AppCompatActivity {
     private TextView name;
     private TextView email;
-    private TextView phone;
+    private TextView birthday;
+    private TextView location;
     private String msg = "";
 
     @Override
@@ -25,7 +27,8 @@ public class MyProfile extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         name = (TextView) findViewById(R.id.name);
         email = (TextView) findViewById(R.id.email);
-        phone = (TextView) findViewById(R.id.phone);
+        birthday = (TextView) findViewById(R.id.birth);
+        location = (TextView) findViewById(R.id.location);
 
         Thread t1 = new Thread(new ClientThread());
         t1.start();
@@ -35,12 +38,7 @@ public class MyProfile extends AppCompatActivity {
 
         }
 
-        String[] tokens = msg.split("#");
-        if (tokens.length > 1) {
-            name.append(":   " + tokens[1]);
-            email.append("  " + tokens[2]);
-            phone.setText(" Phone Number is: " + tokens[3]);
-        }
+
 
 
     }
@@ -65,9 +63,14 @@ public class MyProfile extends AppCompatActivity {
                 messagesend += "#password=" + Login.userpassword;
                 DataInputStream in = new DataInputStream(socket.getInputStream());
                 DataOutputStream out = new DataOutputStream(socket.getOutputStream());
-                out.writeUTF(messagesend);
+
+                out.write(messagesend.getBytes("UTF8"));
                 out.flush();
-                msg = in.readUTF();
+                byte[] b = new byte[5164];
+                in.read(b);
+                msg = "";
+                msg = new String(b, StandardCharsets.UTF_8);
+
                 in.close();
                 out.close();
                 socket.close();

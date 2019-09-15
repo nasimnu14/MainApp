@@ -20,26 +20,65 @@
             android:id="@+id/fstTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Options"
-            android:textColor="#673AB7"
-            android:textSize="36dp"
-            android:layout_gravity="center" />
-
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="330dp"
-            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Button" />
+            android:layout_marginTop="20dp"
+            android:text="My Profile"
+            android:textColor="#673AB7"
+            android:textSize="36dp" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/index" />
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:text="TextView"
-            android:textAlignment="center" />
+            android:id="@+id/name"
+            android:layout_width="276dp"
+            android:layout_height="51dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:text="Name"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="276dp"
+            android:layout_height="51dp"
+            android:layout_gravity="center"
+            android:text="Location"
+            android:layout_marginTop="10dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="276dp"
+            android:layout_height="51dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="Email"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <TextView
+            android:id="@+id/birth"
+            android:layout_width="276dp"
+            android:layout_height="51dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:text="Birthday"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <Button
+            android:id="@+id/stat"
+            style="@android:style/Widget.Button.Inset"
+            android:layout_width="196dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="Statistics"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
 
     </LinearLayout>
 </ScrollView>
