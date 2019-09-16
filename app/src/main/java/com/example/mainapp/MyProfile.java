@@ -28,6 +28,7 @@ public class MyProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_profile);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         name = (TextView) findViewById(R.id.name);
         userid=(TextView) findViewById(R.id.userid);
         email = (TextView) findViewById(R.id.email);
