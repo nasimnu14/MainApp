@@ -24,6 +24,7 @@ public class IdiomsQuiz extends AppCompatActivity {
     private TextView question;
     private TextView answer;
     private Button submit;
+    private Button check;
     private String msg;
     private String str;
     private Button next;
@@ -47,6 +48,7 @@ public class IdiomsQuiz extends AppCompatActivity {
         submit = (Button) findViewById(R.id.submit);
         next=(Button) findViewById(R.id.next);
         next.setEnabled(false);
+        check=(Button) findViewById(R.id.check);
 
         Thread t1=new Thread(new ClientThread());
 
@@ -78,37 +80,48 @@ public class IdiomsQuiz extends AppCompatActivity {
             public void onClick(View v) {
                 int select=radioGroup.getCheckedRadioButtonId();
                 if(select!=-1){
-                   // submit.setEnabled(false);
                     RadioButton selectbutton=(RadioButton) findViewById(select);
                     if(str.equalsIgnoreCase(selectbutton.getText().toString())){
                         answer.setTextColor(Color.GREEN);
                         answer.setTextSize(20);
-                        answer.setText("Correct  answer");
                         submit.setEnabled(false);
+                        answer.setText("Correct answer");
                         next.setEnabled(true);
-
+                        check.setEnabled(false);
                         isCorrect="true";
                     }
                     else {
                         answer.setTextColor(Color.RED);
-                        answer.setTextSize(15);
+                        answer.setTextSize(20);
                         isCorrect="false";
-                        answer.setText("Wrong Answer");
+                        answer.setText( "Incorrect");
                     }
-                    Thread t1=new Thread(new NextThread());
-                    t1.start();
-                    try{
-                        t1.join();
-                    }
-                    catch (Exception ex){
 
-                    }
                 }
+            }
+        });
+        check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                answer.setTextColor(Color.BLUE);
+                submit.setEnabled(false);
+                next.setEnabled(true);
+                isCorrect="false";
+                answer.setText("Correct answer: "+str);
+                check.setEnabled(false);
             }
         });
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Thread t1=new Thread(new NextThread());
+                t1.start();
+                try{
+                    t1.join();
+                }
+                catch (Exception ex){
+
+                }
                 Intent intent=new Intent(IdiomsQuiz.this,IdiomsQuiz.class);
                 startActivity(intent);
                 finish();

@@ -105,16 +105,25 @@
         app:layout_constraintVertical_bias="0.227" />
 
     <Button
-        android:id="@+id/next"
+        android:id="@+id/check"
         android:layout_width="163dp"
         android:layout_height="67dp"
         android:layout_marginBottom="64dp"
-        android:text="NEXT"
+        android:text="Check Answer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.415"
+        app:layout_constraintHorizontal_bias="0.339"
         app:layout_constraintStart_toEndOf="@+id/submit"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup"
         app:layout_constraintVertical_bias="0.227" />
+
+    <Button
+        android:id="@+id/next"
+        android:layout_width="168dp"
+        android:layout_height="69dp"
+        android:text="NEXT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/submit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

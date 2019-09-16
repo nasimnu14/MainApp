@@ -22,7 +22,7 @@
         android:id="@+id/textView2"
         android:layout_width="367dp"
         android:layout_height="34dp"
-        android:text="Fill The Blank"
+        android:text="Fill the blank"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#5C14DB"
@@ -37,15 +37,14 @@
 
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:layout_width="368dp"
-        android:layout_height="350dp"
+        android:layout_width="359dp"
+        android:layout_height="224dp"
         android:layout_marginTop="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:layout_constraintVertical_bias="0.064">
-
 
         <TextView
             android:id="@+id/question"
@@ -55,6 +54,7 @@
             android:textAlignment="center"
             android:textColor="#0E7ACF"
             android:textSize="14sp" />
+
 
         <EditText
             android:id="@+id/answertext"
@@ -70,7 +70,6 @@
             android:id="@+id/answer"
             android:layout_width="match_parent"
             android:layout_height="76dp"
-            android:text="Correct Answer"
             android:textAlignment="center"
             android:textColor="#18C03C"
             android:textSize="30sp" />
@@ -82,24 +81,34 @@
         android:layout_width="163dp"
         android:layout_height="67dp"
         android:layout_marginStart="32dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginTop="28dp"
         android:text="SUBMIT"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
-        app:layout_constraintVertical_bias="0.227" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+    <Button
+        android:id="@+id/check"
+        android:layout_width="163dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="28dp"
+        android:text="CHECK"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toEndOf="@+id/submit"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <Button
         android:id="@+id/next"
         android:layout_width="163dp"
         android:layout_height="67dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginEnd="124dp"
+        android:layout_marginBottom="32dp"
         android:text="NEXT"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.377"
-        app:layout_constraintStart_toEndOf="@+id/submit"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
-        app:layout_constraintVertical_bias="0.227" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/submit"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

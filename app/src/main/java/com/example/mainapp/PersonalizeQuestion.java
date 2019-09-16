@@ -21,6 +21,7 @@ public class PersonalizeQuestion extends AppCompatActivity {
     private String msg;
     private Button submit;
     private Button next;
+    private Button check;
     private EditText answertext;
     private TextView question;
     private TextView answer;
@@ -39,8 +40,12 @@ public class PersonalizeQuestion extends AppCompatActivity {
         submit=(Button) findViewById(R.id.submit);
         next=(Button) findViewById(R.id.next);
         next.setEnabled(false);
+        check=(Button) findViewById(R.id.check);
+        check.setEnabled(false);
+        submit.setEnabled(false);
 
         answertext=(EditText) findViewById(R.id.answertext);
+        answertext.setEnabled(false);
         question=(TextView) findViewById(R.id.question);
         answer=(TextView) findViewById(R.id.answer);
 
@@ -55,7 +60,12 @@ public class PersonalizeQuestion extends AppCompatActivity {
         String []tokens=msg.split("#");
         if(tokens[0].contains("200")) {
             question.setText(tokens[1] + ")" + tokens[2]);
-            str=tokens[3];
+            str=tokens[3].trim();
+            questionno=tokens[1];
+            submit.setEnabled(true);
+            check.setEnabled(true);
+            answertext.setEnabled(true);
+
         }
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,14 +73,43 @@ public class PersonalizeQuestion extends AppCompatActivity {
                 if(answertext.getText().toString().equalsIgnoreCase(str)){
                     answer.setTextColor(Color.GREEN);
                     answer.setText("Correct Answer");
+                    iscorrect="true";
                     next.setEnabled(true);
+                    check.setEnabled(false);
                     submit.setEnabled(false);
                 }
                 else {
                     answer.setTextColor(Color.RED);
                     answer.setText("Incorrect");
+                    iscorrect="false";
 
                 }
+            }
+        });
+        check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                answer.setTextColor(Color.BLUE);
+                answer.setText(str);
+                iscorrect="false";
+                submit.setEnabled(false);
+                next.setEnabled(true);
+            }
+        });
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Thread t1=new Thread(new NextThread());
+                t1.start();
+                try{
+                    t1.join();
+                }
+                catch (Exception ex){
+
+                }
+                Intent intent=new Intent(PersonalizeQuestion.this,PersonalizeQuestion.class);
+                startActivity(intent);
+                finish();
             }
         });
 

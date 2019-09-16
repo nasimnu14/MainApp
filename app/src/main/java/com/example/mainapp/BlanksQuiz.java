@@ -26,6 +26,7 @@ public class BlanksQuiz extends AppCompatActivity {
     private TextView answer;
     private EditText answertext;
     private Button submit;
+    private Button check;
     private String msg;
     private String str;
     private Button next;
@@ -44,6 +45,7 @@ public class BlanksQuiz extends AppCompatActivity {
         submit=(Button) findViewById(R.id.submit);
         next=(Button) findViewById(R.id.next);
         next.setEnabled(false);
+        check=(Button) findViewById(R.id.check);
 
         Thread t1=new Thread(new ClientThread());
 
@@ -57,7 +59,7 @@ public class BlanksQuiz extends AppCompatActivity {
         if(tokens[0].contains("200")){
             questionno=tokens[1];
             question.setText(tokens[1]+". "+tokens[2]);
-            str=tokens[3];
+            str=tokens[3].trim();
 
         }
         submit.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +69,7 @@ public class BlanksQuiz extends AppCompatActivity {
                    answer.setTextColor(Color.GREEN);
                    answer.setText("Correct");
                    next.setEnabled(true);
+                   check.setEnabled(false);
                    submit.setEnabled(false);
                    isCorrect="true";
                }
@@ -85,9 +88,29 @@ public class BlanksQuiz extends AppCompatActivity {
                }
             }
         });
+        check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                next.setEnabled(true);
+                submit.setEnabled(false);
+                isCorrect="false";
+                answer.setTextColor(Color.BLUE);
+                answer.setText("Correct answer: "+str);
+                check.setEnabled(false);
+            }
+        });
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Thread t1=new Thread(new NextThread());
+                t1.start();
+                try{
+                    t1.join();
+
+                }
+                catch (Exception ex){
+
+                }
                 Intent intent=new Intent(BlanksQuiz.this,BlanksQuiz.class);
                 startActivity(intent);
                 finish();
