@@ -86,7 +86,7 @@
             android:id="@+id/answer"
             android:layout_width="match_parent"
             android:layout_height="76dp"
-            android:text="Correct Answer"
+            android:text=""
             android:textAlignment="center"
             android:textColor="#18C03C"
             android:textSize="30sp" />

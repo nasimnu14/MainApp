@@ -52,8 +52,7 @@
                 android:layout_gravity="left"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="10dp"
-                android:max="100"
-                android:progress="30" />
+                android:progressTint="#E91E63" />
 
             <TextView
                 android:id="@+id/blankpercentage"
@@ -94,8 +93,7 @@
                 android:layout_gravity="left"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="10dp"
-                android:max="100"
-                android:progress="30" />
+                android:progressTint="#9C27B0" />
 
             <TextView
                 android:id="@+id/choosepercentage"
@@ -135,8 +133,7 @@
                 android:layout_gravity="left"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="10dp"
-                android:max="100"
-                android:progress="30" />
+                android:progressTint="#04A7B9" />
 
             <TextView
                 android:id="@+id/idiomspercentage"
@@ -177,8 +174,7 @@
                 android:layout_gravity="left"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="10dp"
-                android:max="100"
-                android:progress="30" />
+                android:progressTint="#F34109" />
 
             <TextView
                 android:id="@+id/synonympercentage"
@@ -222,8 +218,7 @@
                 android:layout_gravity="left"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="10dp"
-                android:max="100"
-                android:progress="30" />
+                android:progressTint="#0DE615" />
 
             <TextView
                 android:id="@+id/personalpercentage"
