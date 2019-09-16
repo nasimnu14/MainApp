@@ -1,9 +1,14 @@
 package com.example.mainapp;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.io.DataInputStream;
@@ -19,21 +24,36 @@ public class Statistics extends AppCompatActivity {
     private TextView idiomsquiz;
     private TextView synquiz;
     private TextView personquiz;
+    private TextView random;
     private TextView grammarquiz;
+    private ProgressBar progressBlank;
+    private ProgressBar progessChoose;
+    private ProgressBar progressIdioms;
+    private ProgressBar progressSynonym;
+    private ProgressBar progressPersonal;
     private String msg = "";
 
+    @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistics);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        blankquiz = (TextView) findViewById(R.id.blankquiz);
-        choosequiz = (TextView) findViewById(R.id.choosequiz);
-        idiomsquiz = (TextView) findViewById(R.id.idiomquiz);
-        synquiz = (TextView) findViewById(R.id.synonymquiz);
-        personquiz = (TextView) findViewById(R.id.personalquiz);
-        grammarquiz = (TextView) findViewById(R.id.history);
+        blankquiz = (TextView) findViewById(R.id.blankpercentage);
+        choosequiz = (TextView) findViewById(R.id.choosepercentage);
+        idiomsquiz = (TextView) findViewById(R.id.idiomspercentage);
+        synquiz = (TextView) findViewById(R.id.synonympercentage);
+        personquiz = (TextView) findViewById(R.id.personalpercentage);
+
+        progressBlank=(ProgressBar) findViewById(R.id.progressblank);
+        progessChoose=(ProgressBar) findViewById(R.id.progresschoose);
+        progressIdioms=(ProgressBar) findViewById(R.id.progressidioms);
+        progressSynonym=(ProgressBar) findViewById(R.id.progresssynonym);
+        progressPersonal=(ProgressBar) findViewById(R.id.progresspersonal);
+        random=(TextView) findViewById(R.id.fstTxt);
+
+
 
         Thread t1 = new Thread(new Statistics.ClientThread());
         t1.start();
@@ -44,12 +64,52 @@ public class Statistics extends AppCompatActivity {
         }
 
         String []tokens=msg.split("#");
+        random.setText(msg);
         if(tokens[0].contains("200")){
-            blankquiz.setText("Fill in the blanks: "+tokens[1]+"%");
-            choosequiz.setText("Choose the best answer: "+tokens[2]+"%");
-            idiomsquiz.setText("Phrase and Idioms: "+tokens[3]+"%");
-            synquiz.setText("Synonym and Antonym: "+tokens[4]+"%");
-            personquiz.setText("Personalize Question: "+tokens[5]+"%");
+            try {
+                blankquiz.setText(tokens[1] + "/" + tokens[2]);
+                choosequiz.setText(tokens[3] + "/" + tokens[4]);
+                idiomsquiz.setText(tokens[5] + "/" + tokens[6]);
+                synquiz.setText(tokens[7] + "/" + tokens[8]);
+                personquiz.setText(tokens[9] + "/" + tokens[10]);
+
+                int blankpro = Integer.parseInt(tokens[1].trim());
+                int blankmax = Integer.parseInt(tokens[2].trim());
+
+                int choosepro = Integer.parseInt(tokens[3].trim());
+                int choosemax = Integer.parseInt(tokens[4].trim());
+
+                int idiomspro = Integer.parseInt(tokens[5].trim());
+                int idiomsmax = Integer.parseInt(tokens[6].trim());
+
+                int synpro = Integer.parseInt(tokens[7].trim());
+                int synmax = Integer.parseInt(tokens[8].trim());
+
+                int personpro = Integer.parseInt(tokens[9].trim());
+                int personmax = Integer.parseInt(tokens[10].trim());
+                random.setText(blankpro);
+                random.append(" "+blankmax+" "+choosepro+" "+choosemax);
+                random.append(" "+idiomspro+" "+idiomsmax);
+
+
+                progressBlank.setMax(blankmax);
+                progressBlank.setProgress(blankpro);
+
+                progessChoose.setMax(choosemax);
+                progessChoose.setProgress(choosepro);
+
+                progressIdioms.setMax(idiomsmax);
+                progressIdioms.setProgress(idiomspro);
+
+                progressSynonym.setMax(synmax);
+                progressSynonym.setProgress(synpro);
+
+                progressPersonal.setMax(personmax);
+                progressPersonal.setProgress(personpro);
+            }
+            catch (Exception ex){
+                ex.printStackTrace();
+            }
         }
     }
 

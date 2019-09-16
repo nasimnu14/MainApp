@@ -29,59 +29,215 @@
 
         <TextView
             android:id="@+id/blankquiz"
-            android:layout_width="350dp"
-            android:layout_height="50dp"
+            android:layout_width="354dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
-            android:layout_gravity="center"
             android:text="Fill in the blanks: "
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+
+            <ProgressBar
+                android:id="@+id/progressblank"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="250dp"
+                android:layout_height="30dp"
+                android:layout_gravity="left"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:max="100"
+                android:progress="30" />
+
+            <TextView
+                android:id="@+id/blankpercentage"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_gravity="center"
+                android:text="50/100"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+
+
+        </LinearLayout>
+
         <TextView
             android:id="@+id/choosequiz"
-            android:layout_width="350dp"
-            android:layout_height="50dp"
+            android:layout_width="354dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
-            android:layout_gravity="center"
             android:text="Choose the best answer: "
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+
+            <ProgressBar
+                android:id="@+id/progresschoose"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="250dp"
+                android:layout_height="30dp"
+                android:layout_gravity="left"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:max="100"
+                android:progress="30" />
+
+            <TextView
+                android:id="@+id/choosepercentage"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_gravity="center"
+                android:text="50/100"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+
+
+        </LinearLayout>
+
         <TextView
             android:id="@+id/idiomquiz"
-            android:layout_width="350dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
+            android:layout_width="354dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:text="Phrase and Idioms: "
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+
+            <ProgressBar
+                android:id="@+id/progressidioms"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="250dp"
+                android:layout_height="30dp"
+                android:layout_gravity="left"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:max="100"
+                android:progress="30" />
+
+            <TextView
+                android:id="@+id/idiomspercentage"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_gravity="center"
+                android:text="50/100"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+
+
+        </LinearLayout>
+
 
         <TextView
             android:id="@+id/synonymquiz"
-            android:layout_width="350dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
+            android:layout_width="354dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="20dp"
             android:text="Synonym and Antonym: "
             android:layout_marginTop="10dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+
+            <ProgressBar
+                android:id="@+id/progresssynonym"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="250dp"
+                android:layout_height="30dp"
+                android:layout_gravity="left"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:max="100"
+                android:progress="30" />
+
+            <TextView
+                android:id="@+id/synonympercentage"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_gravity="center"
+                android:text="50/100"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+
+
+        </LinearLayout>
 
 
 
         <TextView
             android:id="@+id/personalquiz"
-            android:layout_width="350dp"
-            android:layout_height="50dp"
+            android:layout_width="354dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
-            android:layout_gravity="center"
             android:text="Personalize Question: "
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-        <TextView
-            android:id="@+id/history"
-            android:layout_width="350dp"
-            android:layout_height="400dp"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="50dp"
-            android:layout_gravity="center"
-            android:text="Grammar History: "
-            android:scrollbars="vertical"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:orientation="horizontal">
+
+
+            <ProgressBar
+                android:id="@+id/progresspersonal"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="250dp"
+                android:layout_height="30dp"
+                android:layout_gravity="left"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:max="100"
+                android:progress="30" />
+
+            <TextView
+                android:id="@+id/personalpercentage"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="20dp"
+                android:layout_gravity="center"
+                android:text="50/100"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+
+
+        </LinearLayout>
 
 
 
