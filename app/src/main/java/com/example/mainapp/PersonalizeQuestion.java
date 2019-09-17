@@ -28,6 +28,7 @@ public class PersonalizeQuestion extends AppCompatActivity {
     private String str;
     private String questionno;
     private String iscorrect;
+    private TextView notify;
 
 
 
@@ -48,6 +49,7 @@ public class PersonalizeQuestion extends AppCompatActivity {
         answertext.setEnabled(false);
         question=(TextView) findViewById(R.id.question);
         answer=(TextView) findViewById(R.id.answer);
+        notify = (TextView) findViewById(R.id.notifiy);
 
         Thread t1=new Thread(new ClientThread());
         t1.start();
@@ -61,6 +63,15 @@ public class PersonalizeQuestion extends AppCompatActivity {
         if(tokens[0].contains("200")) {
             question.setText(tokens[1] + ")" + tokens[2]);
             str=tokens[3].trim();
+            if(tokens[4].contains("1"))
+            {
+                notify.setText("(You have got this incorrect last time.)");
+                notify.setTextColor(Color.RED);
+
+            }else {
+
+                notify.setTextColor(Color.BLUE);
+            }
             questionno=tokens[1];
             submit.setEnabled(true);
             check.setEnabled(true);

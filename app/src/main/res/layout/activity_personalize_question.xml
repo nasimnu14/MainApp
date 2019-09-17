@@ -23,15 +23,14 @@
         android:id="@+id/answertext"
         android:layout_width="375dp"
         android:layout_height="58dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="Write The Correct Here"
         android:inputType="textPersonName"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.527"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/question" />
+        app:layout_constraintTop_toBottomOf="@+id/notifiy" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -42,19 +41,31 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/frinlogo" />
 
+
     <TextView
         android:id="@+id/question"
-        android:layout_width="368dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="366dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="16dp"
         android:text="You don't have enough question"
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
+    <TextView
+        android:id="@+id/notifiy"
+        android:layout_width="365dp"
+        android:layout_height="33dp"
+        android:text="(New Question.)"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/question" />
 
     <TextView
         android:id="@+id/answer"
