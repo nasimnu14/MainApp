@@ -1,5 +1,13 @@
 package com.example.mainapp;
 
+/*
+*
+* this is our main feature
+* the grammar corrector
+* Nasim
+* The grammmar corrector will work  both on run time and clicking submit button
+* */
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -29,6 +37,9 @@ public class SpellingCorrect extends AppCompatActivity {
     private String runmsg="";
 
     private String text="";
+    /*
+     * these are some private varibale used for layout show
+     * */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +56,9 @@ public class SpellingCorrect extends AppCompatActivity {
         wrongline.setTextSize(20);
 
         wrongline.addTextChangedListener(new TextWatcher()
-        {
+        {   /* this override function is for runtime error correction
+
+            */
             @Override
             public void afterTextChanged(Editable mEdit)
             {
@@ -61,9 +74,14 @@ public class SpellingCorrect extends AppCompatActivity {
 
             public void onTextChanged(CharSequence s, int start, int before, int count){}
         });
-
+        /*
+         *
+         * this button will work for error correction
+         *
+         * */
 
         submit.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
 
@@ -106,6 +124,15 @@ public class SpellingCorrect extends AppCompatActivity {
                 Socket socket = new Socket(FirstPage.ip, FirstPage.port);
                 DataInputStream in = new DataInputStream(socket.getInputStream());
                 DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+                /*
+                 *
+                 * this sending message manage a protocol
+                 * where messsagetype will declare what type of message it is
+                 * here message type is spelling
+                 * server will understand what should do after getting the message
+                 * username and password are send for authentication and track the user
+                 *
+                 * */
                 String sendmessage = "messagetype=spelling#";
                 sendmessage+=Login.userid+"#";
 
@@ -115,6 +142,10 @@ public class SpellingCorrect extends AppCompatActivity {
 
                 out.write(sendmessage.getBytes("UTF8"));
                 out.flush();
+                /*
+                *  receive correct message from the server
+                *
+                * */
                 byte[] b = new byte[5164];
                 in.read(b);
 
@@ -151,12 +182,25 @@ public class SpellingCorrect extends AppCompatActivity {
                 Socket socket=new Socket(FirstPage.ip,FirstPage.port);
                 DataInputStream in=new DataInputStream(socket.getInputStream());
                 DataOutputStream out=new DataOutputStream(socket.getOutputStream());
+                /*
+                 *
+                 * this sending message manage a protocol
+                 * where messsagetype will declare what type of message it is
+                 * here message type is spelling
+                 * server will understand what should do after getting the message
+                 * username and password are send for authentication and track the user
+                 *
+                 * */
                 String sendmessage="messagetype=spelling#";
                 sendmessage+=Login.userid+"#";
                 sendmessage+=runtimewrongmessage;
                 out.write(sendmessage.getBytes("UTF8"));
                 out.flush();
                 byte []b=new byte[5164];
+                /*
+                 *  receive correct message from the server
+                 *
+                 * */
                 in.read(b);
                 String runtimemessage=new String(b,StandardCharsets.UTF_8);
                 in.close();

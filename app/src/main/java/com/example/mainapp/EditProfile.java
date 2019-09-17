@@ -1,5 +1,11 @@
 package com.example.mainapp;
 
+/*
+* This is for editing profile
+* Nasim
+*
+* */
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -28,6 +34,11 @@ public class EditProfile extends AppCompatActivity {
     private String msg2 = "";
     private EditText bday;
     private EditText location1;
+    /*
+     *
+     * username email password etc are  used for taking input from the layout
+     *
+     * */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +55,12 @@ public class EditProfile extends AppCompatActivity {
         Button edited = (Button) findViewById(R.id.edited);
 
         Thread t1 = new Thread(new EditProfile.ClientThread());
+        /*
+        *
+        * thuis thread is for connect to the server
+        *
+        *
+        * */
         t1.start();
         try {
             t1.join();
@@ -59,6 +76,14 @@ public class EditProfile extends AppCompatActivity {
         }
 
         edited.setOnClickListener(new View.OnClickListener() {
+            /*
+            *
+            * whenever this button is pressed
+            * a thread will be start
+            * that thread will submit if anything chaged during the session for editing his/her profile
+            *
+            *
+            * */
             @Override
             public void onClick(View view) {
                 if (pass.getText().toString().matches(confirmpass.getText().toString())) {
@@ -66,7 +91,9 @@ public class EditProfile extends AppCompatActivity {
                     Thread t1 = new Thread(new EditProfile.ServerThread());
                     t1.start();
                     try {
-                        t1.join();
+                        t1.join();/*
+                        thread waited for child thread
+                        */
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -104,6 +131,15 @@ public class EditProfile extends AppCompatActivity {
 
             try {
                 Socket socket = new Socket(FirstPage.ip, FirstPage.port);
+                /*
+                 *
+                 * this sending message manage a protocol
+                 * where messsagetype will declare what type of message it is
+                 * here message type is myprofile
+                 * server will understand what should do after getting the message
+                 * username and password are send for authentication and track the user
+                 *
+                 * */
                 String msgrcv = "messagetype=myprofile#";
                 msgrcv += "id=" + Login.userid;
                 msgrcv += "#password=" + Login.userpassword;
@@ -113,6 +149,10 @@ public class EditProfile extends AppCompatActivity {
                 out.write(msgrcv.getBytes("UTF8"));
                 out.flush();
                 byte[] b = new byte[5164];
+                /*
+                 *
+                 *  read message from the server which will direct the message to the layout for quiz
+                 * */
                 in.read(b);
                 msg1 = "";
                 msg1 = new String(b, StandardCharsets.UTF_8);
@@ -136,6 +176,11 @@ public class EditProfile extends AppCompatActivity {
         public void run() {
             try {
                 socket = new Socket(FirstPage.ip, FirstPage.port);
+
+                /*
+                *  this message for submitting the changes to the server
+                *
+                * */
                 String msgsend = "messagetype=editprofile#";
                 msgsend += "name=" + username.getText().toString();
                 msgsend += "#email=" + email_id.getText().toString();

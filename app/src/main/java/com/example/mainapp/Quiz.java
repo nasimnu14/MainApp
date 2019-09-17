@@ -1,5 +1,16 @@
 package com.example.mainapp;
 
+/*
+
+ this activity is for showing what kind of quiz we provide
+*
+we have fill in the blanks quiz, phrases and idioms quiz, choose the correct answer , antonym and synonym quiz
+*
+ we have also personal quiz
+
+ every quiz has correspondin button 
+*/
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;

@@ -1,5 +1,11 @@
 package com.example.mainapp;
 
+/*
+*
+* this activity is used for statistics
+* question solved by user will be shown in the activity
+* */
+
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -64,6 +70,16 @@ public class Statistics extends AppCompatActivity {
         }
 
         String []tokens=msg.split("#");
+        /*
+        *  Here we parse the mesage come from the server to know the progression
+        * the server will send how many question attempted by the user and how many question has in the server
+        *
+        * fill in the blank , choose the best answer , idioms and phrases and synonym and antonym quiz portion comes from one
+        * after another
+        *
+        * this activity will also show the personal quiz result
+        *
+        * */
 
         if(tokens[0].contains("200")){
 
@@ -138,6 +154,15 @@ public class Statistics extends AppCompatActivity {
 
             try {
                 Socket socket = new Socket(FirstPage.ip, FirstPage.port);
+                /*
+                 *
+                 * this sending message manage a protocol
+                 * where messsagetype will declare what type of message it is
+                 * here message type is statistics
+                 * server will understand what should do after getting the message
+                 * username and password are send for authentication and track the user
+                 *
+                 * */
                 String messagesend = "messagetype=statistics#";
                 messagesend += "id=" + Login.userid;
                 messagesend += "#password=" + Login.userpassword;
@@ -147,6 +172,11 @@ public class Statistics extends AppCompatActivity {
                 out.write(messagesend.getBytes("UTF8"));
                 out.flush();
                 byte[] b = new byte[5164];
+                /*
+                 *
+                 *  read message from the server which will direct the message to the layout for quiz
+                 * */
+
                 in.read(b);
                 msg = "";
                 msg = new String(b, StandardCharsets.UTF_8);
