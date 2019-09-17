@@ -23,6 +23,13 @@ public class BlanksQuiz extends AppCompatActivity {
     /**
      * first initialize the items that will be used in the blank quiz page.
      * they are initialized private so that other page can't be able to use the items.
+     * radio group is used for the options
+     * text views are used for showing ques and answer
+     * edit text is used for submitting ans
+     * check button is for checking solution
+     * submit button is for submitting ans
+     * next button is for showing next ques
+     * the strings are used for string parsing
      */
 
     private RadioGroup radioGroup;
@@ -70,24 +77,31 @@ public class BlanksQuiz extends AppCompatActivity {
 
         }
 
-        submit.setOnClickListener(new View.OnClickListener() {      //this function is used for clicking the "Submit" button
+        submit.setOnClickListener(new View.OnClickListener() {
+            /**
+             * this function is for when submit button is clicked
+             * it will take which option is selected and match with the correct answer
+             * if the answer is correct it will enable the next button and disable the next and submit button
+             * if the answer is wrong then it will show by the text view answer
+             * new thread is created for submitting the information to the  server
+             * */
             @Override
-            public void onClick(View v) {                           //if the button is clicked this view will be showed
-               if(answertext.getText().toString().trim().equalsIgnoreCase(str.trim())){         //which answer the user submitted is checked with the answer, if correct below statements will be run
+            public void onClick(View v) {
+               if(answertext.getText().toString().trim().equalsIgnoreCase(str.trim())){
                    answer.setTextColor(Color.GREEN);
                    answer.setText("Correct");
-                   next.setEnabled(true);                           //Next button is enabled now
-                   check.setEnabled(false);                         //As the ans is correct, Check solution button is disabled
-                   submit.setEnabled(false);                        //Submit button is also disabled
+                   next.setEnabled(true);
+                   check.setEnabled(false);
+                   submit.setEnabled(false);
                    isCorrect="true";
                }
-               else {                                               //this section is for giving wrong answer
+               else {
                    answer.setTextColor(Color.RED);
                    answer.setText("Wrong");
                    isCorrect="false";
                }
 
-               Thread t2=new Thread(new NextThread());              //new thread is created for another socket programming
+               Thread t2=new Thread(new NextThread());
                t2.start();
                try{
                    t2.join();
@@ -98,6 +112,11 @@ public class BlanksQuiz extends AppCompatActivity {
             }
         });
         check.setOnClickListener(new View.OnClickListener() {
+            /**
+             * this function will work when the check solution button is clicked
+             * this button will show the  correct answer
+             * then it will disable the submit and check button and enable the next button
+             * */
             @Override
             public void onClick(View v) {
                 next.setEnabled(true);
@@ -109,6 +128,11 @@ public class BlanksQuiz extends AppCompatActivity {
             }
         });
         next.setOnClickListener(new View.OnClickListener() {
+            /**
+             * this function will work when the next button is clicked
+             * it will create a new thread to gain next ques from the server
+             * then it will go on the next question page
+             * */
             @Override
             public void onClick(View v) {
                 Thread t1=new Thread(new NextThread());
@@ -130,6 +154,10 @@ public class BlanksQuiz extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
+        /**
+         * this function is for the default back button of a android app
+         * by this button it will go to the previous quiz page
+         * */
         Intent intent = new Intent(BlanksQuiz.this, Quiz.class);
         startActivity(intent);
         finish();

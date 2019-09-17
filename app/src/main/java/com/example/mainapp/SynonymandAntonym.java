@@ -19,6 +19,17 @@ import java.net.UnknownHostException;
 import java.nio.charset.StandardCharsets;
 
 public class SynonymandAntonym extends AppCompatActivity {
+    /**
+     * first initialize the items that will be used in the choose quiz page.
+     * they are initialized private so that other page can't be able to use the items.
+     * radio group is used for the options
+     * text views are used for showing ques and answer
+     * edit text is used for submitting ans
+     * check button is for checking solution
+     * submit button is for submitting ans
+     * next button is for showing next ques
+     * the strings are used for string parsing
+     */
     private RadioGroup radioGroup;
     private RadioButton[] radioButtons;
     private TextView question;
@@ -36,6 +47,10 @@ public class SynonymandAntonym extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_synonymand_antonym);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        /**
+         * all the items are connected with the items in the xml page
+         * */
 
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         radioButtons = new RadioButton[4];
@@ -59,6 +74,14 @@ public class SynonymandAntonym extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        /**
+         * new thread is opened to gain question and answer from the server
+         * the message sent by server are splited by character '#'
+         * 200 message is sent by the server for correct message
+         * questions and options are set in the radio button and question text view
+         * */
+
         String []tokens=msg.split("#");
         if(tokens[0].contains("200")){
             str=tokens[tokens.length-1];
@@ -77,6 +100,13 @@ public class SynonymandAntonym extends AppCompatActivity {
 
         }
         submit.setOnClickListener(new View.OnClickListener() {
+            /**
+             * this function is for when submit button is clicked
+             * it will take which option is selected and match with the correct answer
+             * if the answer is correct it will enable the next button and disable the next and submit button
+             * if the answer is wrong then it will show by the text view answer
+             * new thread is created for submitting the information to the  server
+             * */
             @Override
             public void onClick(View v) {
                 int select=radioGroup.getCheckedRadioButtonId();
@@ -102,6 +132,11 @@ public class SynonymandAntonym extends AppCompatActivity {
             }
         });
         check.setOnClickListener(new View.OnClickListener() {
+            /**
+             * this function will work when the check solution button is clicked
+             * this button will show the  correct answer
+             * then it will disable the submit and check button and enable the next button
+             * */
             @Override
             public void onClick(View v) {
                 answer.setTextColor(Color.BLUE);
@@ -114,6 +149,11 @@ public class SynonymandAntonym extends AppCompatActivity {
         });
 
         next.setOnClickListener(new View.OnClickListener() {
+            /**
+             * this function will work when the next button is clicked
+             * it will create a new thread to gain next ques from the server
+             * then it will go on the next question page
+             * */
             @Override
             public void onClick(View v) {
                 Thread t1=new Thread(new NextThread());
@@ -134,6 +174,10 @@ public class SynonymandAntonym extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
+        /**
+         * this function is for the default back button of a android app
+         * by this button it will go to the previous quiz page
+         * */
         Intent intent = new Intent(SynonymandAntonym.this, Quiz.class);
         startActivity(intent);
         finish();
@@ -147,6 +191,16 @@ public class SynonymandAntonym extends AppCompatActivity {
                 Socket socket = new Socket(FirstPage.ip, FirstPage.port);
                 DataInputStream in = new DataInputStream(socket.getInputStream());
                 DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+
+                /*
+                 *
+                 * this sending message manage a protocol
+                 * where messsagetype will declare what type of message it is
+                 * here message type is choosequiz
+                 * server will understand what should do after getting the message
+                 *
+                 * */
+
                 String sendmessage = "messagetype=synonymquiz";
                 sendmessage += "#username=" + Login.userid;
                 sendmessage += "#password=" + Login.userpassword;
@@ -154,6 +208,12 @@ public class SynonymandAntonym extends AppCompatActivity {
                 out.write(sendmessage.getBytes("UTF8"));
                 out.flush();
                 byte[] b = new byte[5164];
+
+                /*
+                 *
+                 *  read message from the server which will direct the message to the layout for quiz
+                 * */
+
                 in.read(b);
                 msg = "";
                 msg = new String(b, StandardCharsets.UTF_8);
@@ -172,6 +232,11 @@ public class SynonymandAntonym extends AppCompatActivity {
         }
     }
     class NextThread implements  Runnable{
+        /*
+         *  this message wiil tell the server to save whether the user is correct or wrong
+         * and server will make personalise question using this data
+         *
+         * */
         @Override
         public void run(){
             try{
