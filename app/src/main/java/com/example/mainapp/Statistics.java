@@ -68,13 +68,13 @@ public class Statistics extends AppCompatActivity {
         if(tokens[0].contains("200")){
 
             try {
-                blankquiz.setText((Integer.parseInt(tokens[1].trim())-1) + "/" + tokens[2]);
-                choosequiz.setText((Integer.parseInt(tokens[3].trim())-1)  + "/" + tokens[4]);
-                idiomsquiz.setText((Integer.parseInt(tokens[5].trim())-1)  + "/" + tokens[6]);
-                synquiz.setText((Integer.parseInt(tokens[7].trim())-1)  + "/" + tokens[8]);
-                if(Integer.parseInt(tokens[9].trim())>0)
+                blankquiz.setText(tokens[1] + "/" + (Integer.parseInt(tokens[2].trim())-1) );
+                choosequiz.setText(tokens[3] + "/" + (Integer.parseInt(tokens[4].trim())-1) );
+                idiomsquiz.setText(tokens[5] + "/" + (Integer.parseInt(tokens[6].trim())-1) );
+                synquiz.setText(tokens[7] + "/" + (Integer.parseInt(tokens[8].trim())-1) );
+                if(Integer.parseInt(tokens[10].trim())>0)
                 {
-                    personquiz.setText((Integer.parseInt(tokens[9].trim())-1)  + "/" + tokens[10]);
+                    personquiz.setText(tokens[9] + "/" + (Integer.parseInt(tokens[10].trim())-1) );
                 }
                 else
                 {
@@ -88,24 +88,24 @@ public class Statistics extends AppCompatActivity {
             }
         }
         int blankpro = Integer.parseInt(tokens[1].trim());
-        blankpro=blankpro-1;
         int blankmax = Integer.parseInt(tokens[2].trim());
+        blankmax=blankmax-1;
 
         int choosepro = Integer.parseInt(tokens[3].trim());
-        choosepro=choosepro-1;
         int choosemax = Integer.parseInt(tokens[4].trim());
+        choosemax=choosemax-1;
 
         int idiomspro = Integer.parseInt(tokens[5].trim());
-        idiomspro=idiomspro-1;
         int idiomsmax = Integer.parseInt(tokens[6].trim());
+        idiomsmax=idiomsmax-1;
 
         int synpro = Integer.parseInt(tokens[7].trim());
-        synpro=synpro-1;
         int synmax = Integer.parseInt(tokens[8].trim());
+        synmax=synmax-1;
 
         int personpro = Integer.parseInt(tokens[9].trim());
         int personmax = Integer.parseInt(tokens[10].trim());
-        if(personpro>0) personpro=personpro-1;
+        if(personpro>0) personmax=personmax-1;
 
         progressBlank.setMax(blankmax);
         progressBlank.setProgress(blankpro);
