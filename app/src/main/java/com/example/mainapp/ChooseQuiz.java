@@ -145,6 +145,15 @@ public class ChooseQuiz extends AppCompatActivity {
                 Socket socket = new Socket(FirstPage.ip, FirstPage.port);
                 DataInputStream in = new DataInputStream(socket.getInputStream());
                 DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+                /*
+                 *
+                 * this sending message manage a protocol
+                 * where messsagetype will declare what type of message it is
+                 * here message type is choosequiz
+                 * server will understand what should do after getting the message
+                 *
+                 * */
+
                 String sendmessage = "messagetype=choosequiz#";
                 sendmessage += "username=" + Login.userid;
                 sendmessage += "#password=" + Login.userpassword;

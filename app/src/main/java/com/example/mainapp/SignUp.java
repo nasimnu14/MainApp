@@ -52,6 +52,7 @@ public class SignUp extends AppCompatActivity {
         confirmpassword = (EditText) findViewById(R.id.confirmpass);
         userid=(EditText) findViewById(R.id.userid);
         bdate=(EditText) findViewById(R.id.birthdate);
+
         location=(EditText) findViewById(R.id.location);
         Button register = (Button) findViewById(R.id.login);
 
@@ -61,7 +62,24 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 userid.setTextColor(Color.BLACK);
-                if (password.getText().toString().matches(confirmpassword.getText().toString())) {
+                String []date= bdate.getText().toString().split("-");
+                int flag=0;
+                if (date.length==3) {
+                    if (Integer.parseInt(date[0]) < 1900 || Integer.parseInt(date[0]) > 2019) {
+                        flag = 1;
+                    }
+                    if (Integer.parseInt(date[1]) < 1 || Integer.parseInt(date[1]) > 12) {
+                        flag = 1;
+                    }
+                    if (Integer.parseInt(date[2]) < 1 || Integer.parseInt(date[2]) > 31) {
+                        flag = 1;
+                    }
+                }
+                else {
+                    flag=1;
+                }
+
+                if ((flag==0) && password.getText().toString().matches(confirmpassword.getText().toString())) {
 
                     Thread t1 = new Thread(new ClientThread());
                     t1.start();
@@ -83,7 +101,14 @@ public class SignUp extends AppCompatActivity {
                     }
 
 
-                } else {
+                }
+                else if(flag==1){
+
+                    bdate.setHintTextColor(Color.RED);
+                    bdate.setText("");
+                    bdate.setHint("please give valid birthday(yyyy-mm-dd)");
+                }
+                else {
                     password.setTextColor(Color.rgb(255, 0, 0));
                     confirmpassword.setTextColor(Color.rgb(255, 0, 0));
                 }
@@ -105,6 +130,12 @@ public class SignUp extends AppCompatActivity {
         public void run() {
             try {
                 socket = new Socket(FirstPage.ip, FirstPage.port);
+                /*
+                 *
+                 * this sending message manage a protocol
+                 * where messsagetype will declare what type of message it is
+                 *
+                 * */
                 String messagesend = "messagetype=signin#";
                 messagesend += "name=" + name.getText().toString();
                 messagesend += "#email=" + email.getText().toString();

@@ -143,6 +143,16 @@ public class BlanksQuiz extends AppCompatActivity {
                 Socket socket = new Socket(FirstPage.ip, FirstPage.port);
                 DataInputStream in = new DataInputStream(socket.getInputStream());
                 DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+                /*
+                 *
+                 * this sending message manage a protocol
+                 * where messsagetype will declare what type of message it is
+                 * here message type is blankquiz
+                 * server will understand what should do after getting the message
+                 * username and password are send for authentication and track the user
+                 *
+                 * */
+
                 String sendmessage = "messagetype=blankquiz#";
                 sendmessage += "username=" + Login.userid;
                 sendmessage += "#password=" + Login.userpassword;
@@ -150,6 +160,10 @@ public class BlanksQuiz extends AppCompatActivity {
                 out.write(sendmessage.getBytes("UTF8"));
                 out.flush();
                 byte[] b = new byte[5164];
+                /*
+                *
+                *  read message from the server which will direct the message to the layout for quiz
+                * */
                 in.read(b);
                 msg = "";
                 msg = new String(b, StandardCharsets.UTF_8);
@@ -174,6 +188,11 @@ public class BlanksQuiz extends AppCompatActivity {
                 Socket socket=new Socket(FirstPage.ip,FirstPage.port);
                 DataOutputStream out=new DataOutputStream(socket.getOutputStream());
                 String sendmessage="";
+                /*
+                *  this message wiil tell the server to save whether the user is correct or wrong
+                * and server will make personalise question using this data
+                *
+                * */
                 sendmessage="messagetype=blankresult#";
                 sendmessage+="username="+Login.userid;
                 sendmessage+="#password="+Login.userpassword;
