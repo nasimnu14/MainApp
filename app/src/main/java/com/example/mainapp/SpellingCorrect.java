@@ -97,7 +97,7 @@ public class SpellingCorrect extends AppCompatActivity {
 
                 String[] tokens = msg.split("#");
                 if (tokens[0].contains("200")) {
-                   correctText.setText(tokens[1].toString());
+                   correctText.setText(tokens[1].trim());
                 }
 
 
@@ -207,8 +207,8 @@ public class SpellingCorrect extends AppCompatActivity {
                 out.close();
                 socket.close();
                 String []tokens=runtimemessage.split("#");
-                if(runtimemessage.contains("200")){
-                    correctText.setText(tokens[1]);
+                if(tokens[0].contains("200")){
+                    correctText.setText(tokens[1].trim());
                 }
 
             }

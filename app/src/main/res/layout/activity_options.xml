@@ -32,9 +32,9 @@
             style="@android:style/Widget.Button.Inset"
             android:layout_width="207dp"
             android:layout_height="69dp"
-            android:text="Check Grammer"
+            android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:layout_gravity="center" />
+            android:text="Check Grammar" />
 
         <Button
             android:id="@+id/quiz"

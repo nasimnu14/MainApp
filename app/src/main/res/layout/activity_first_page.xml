@@ -44,5 +44,11 @@
             android:layout_marginTop="30dp"
             android:text="Sign   UP" />
 
+        <Button
+            android:id="@+id/about"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="About Us" />
+
     </LinearLayout>
 </ScrollView>

@@ -50,6 +50,7 @@ public class FirstPage extends AppCompatActivity {
         setContentView(R.layout.activity_first_page);
         Button login = (Button) findViewById(R.id.login);
         Button signup = (Button) findViewById(R.id.signup);
+        Button about = (Button) findViewById(R.id.about);
         final TextView textView = (TextView) findViewById(R.id.fstTxt);
 /*
 *
@@ -74,6 +75,14 @@ public class FirstPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(FirstPage.this, SignUp.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FirstPage.this, Login.class);
                 startActivity(intent);
                 finish();
             }

@@ -71,7 +71,8 @@ public class EditProfile extends AppCompatActivity {
         if(tokens[0].contains("200")){
             username.setText(tokens[1]);
             email_id.setText(tokens[3]);
-            location1.setText(tokens[4]);
+            String str=tokens[4].split(",")[0];
+            location1.setText(str);
             bday.setText(tokens[5]);
         }
 
@@ -86,7 +87,24 @@ public class EditProfile extends AppCompatActivity {
             * */
             @Override
             public void onClick(View view) {
-                if (pass.getText().toString().matches(confirmpass.getText().toString())) {
+
+                String []date= bday.getText().toString().split("-");
+                int flag=0;
+                if (date.length==3) {
+                    if (Integer.parseInt(date[0]) < 1900 || Integer.parseInt(date[0]) > 2019) {
+                        flag = 1;
+                    }
+                    if (Integer.parseInt(date[1]) < 1 || Integer.parseInt(date[1]) > 12) {
+                        flag = 1;
+                    }
+                    if (Integer.parseInt(date[2].trim()) < 1 || Integer.parseInt(date[2].trim()) > 31) {
+                        flag = 1;
+                    }
+                }
+                else {
+                    flag=1;
+                }
+                if ( (flag==0 )&& pass.getText().toString().matches(confirmpass.getText().toString())) {
 
                     Thread t1 = new Thread(new EditProfile.ServerThread());
                     t1.start();
@@ -106,7 +124,14 @@ public class EditProfile extends AppCompatActivity {
                     }
 
 
-                } else {
+                }
+                else if(flag==1){
+
+                    bday.setHintTextColor(Color.RED);
+                    bday.setText("");
+                    bday.setHint("please give valid birthday(yyyy-mm-dd)");
+                }
+                else {
                     pass.setTextColor(Color.rgb(255, 0, 0));
                     confirmpass.setTextColor(Color.rgb(255, 0, 0));
                 }
@@ -184,8 +209,13 @@ public class EditProfile extends AppCompatActivity {
                 String msgsend = "messagetype=editprofile#";
                 msgsend += "name=" + username.getText().toString();
                 msgsend += "#email=" + email_id.getText().toString();
-                msgsend += "#password=" + pass.getText().toString();
-                msgsend += "#birthdate=" + bday.getText().toString();
+                if(pass.getText().toString().isEmpty()){
+                    msgsend += "#password=" + Login.userpassword;
+                }
+                else {
+                    msgsend+="#password=" + pass.getText().toString();
+                }
+                msgsend += "#birthdate=" + bday.getText().toString().trim();
                 msgsend += "#location="+ location1.getText().toString();
                 msgsend += "#userid=" + Login.userid;
 

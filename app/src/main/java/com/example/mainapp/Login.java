@@ -34,8 +34,8 @@ public class Login extends AppCompatActivity {
      this user id and password will work as session id for the app
 
      */
-    public static String userid = "";
-    public static String userpassword = "";
+    public static String userid ;
+    public static String userpassword ;
 
 
 
@@ -83,8 +83,8 @@ public class Login extends AppCompatActivity {
 
                     if (msg.contains("200")) {
                         /* if it is a valid userid and password then this page will direct to the options page */
-                        userid = email.getText().toString();
-                        userpassword = password.getText().toString();
+                        Login.userid = email.getText().toString();
+                        Login.userpassword = password.getText().toString();
                         Intent intent = new Intent(Login.this, Options.class);
                         startActivity(intent);
                         finish();
@@ -126,6 +126,7 @@ public class Login extends AppCompatActivity {
                                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
+                                        finish();
 
 
                                     }
